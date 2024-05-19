@@ -8,8 +8,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.COLORS.WHITE};
-    color: ${({ theme }) => theme.COLORS.BLACK};
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    color: ${({ theme }) => theme.COLORS.GRAY};
 
     -webkit-font-smoothing: antialiased;
   } 
@@ -22,6 +22,7 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: inherit;
   }
 
   ol, ul {
