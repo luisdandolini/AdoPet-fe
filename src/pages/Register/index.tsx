@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { InputMask } from "@react-input/mask";
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Snackbar, SnackbarOrigin } from "@mui/material";
 import { useState } from "react";
 
@@ -54,6 +54,8 @@ export function Register() {
   });
   const { vertical, horizontal, open } = state;
 
+  const navigate = useNavigate();
+
   const handleClose = () => {
     setState({ ...state, open: false });
   };
@@ -85,9 +87,12 @@ export function Register() {
   const onSubmitRegister = (data: Register) => {
     axios
       .post("http://localhost:3000/api/users/register", data)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
         setState({ ...state, open: true });
+
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       })
       .catch((error) => {
         console.log(error);
@@ -215,6 +220,12 @@ export function Register() {
         onClose={handleClose}
         message="Usuário cadastrado com sucesso!"
         key={vertical + horizontal}
+        sx={{
+          "& .MuiSnackbarContent-root": {
+            backgroundColor: "#4caf50", // Altere a cor de fundo aqui
+            color: "#fff", // Altere a cor do texto aqui
+          },
+        }}
       />
     </Container>
   );
