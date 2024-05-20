@@ -12,6 +12,7 @@ import * as zod from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const UserSchema = zod.object({
   username: zod.string().min(1, "O Usuário é obrigatório"),
@@ -77,7 +78,7 @@ export function Login() {
             <p>Ou</p>
             <Divider></Divider>
           </ContainerDivider>
-          <a href="#">Cadastre-se</a>
+          <Link to={"/register"}>Cadastre-se</Link>
         </ContainerForm>
       </ContainerLogin>
     </Container>
