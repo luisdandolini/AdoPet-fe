@@ -9,5 +9,7 @@ export default {
     BLACK: "#37383D",
     GRAY: "#454545",
     GRAY_LIGTH: "#C6C6C6",
+
+    ERROR: "#DB0000",
   },
 };

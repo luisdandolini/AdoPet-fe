@@ -30,7 +30,7 @@ export const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 4rem 2rem;
+  padding: 3rem 2rem;
 
   width: 400px;
   height: 600px;
@@ -44,7 +44,7 @@ export const ContainerForm = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
     gap: 1.5rem;
 
     input {
@@ -61,6 +61,12 @@ export const ContainerForm = styled.div`
       border: none;
       border-radius: 0.5rem;
       margin: 1rem 0rem;
+    }
+
+    span {
+      font-size: 0.7rem;
+      margin-top: -1rem;
+      color: ${({ theme }) => theme.COLORS.ERROR};
     }
   }
 
