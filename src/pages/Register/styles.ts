@@ -14,6 +14,7 @@ export const ContainerLogin = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row-reverse;
 `;
 
 export const ContainerImage = styled.div`
@@ -31,26 +32,30 @@ export const ContainerForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
 
   width: 400px;
   height: 600px;
-
-  h1 {
-    margin-top: 1rem;
-  }
 
   form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
     gap: 1.5rem;
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
 
     input {
       border: none;
       border-bottom: 1px solid ${({ theme }) => theme.COLORS.GRAY};
+      max-width: 85%;
     }
 
     button {
@@ -69,9 +74,22 @@ export const ContainerForm = styled.div`
       margin-top: -1rem;
       color: ${({ theme }) => theme.COLORS.ERROR};
     }
+
+    .back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin-top: -1.5rem;
+    }
   }
 
   img {
     width: 100px;
   }
+`;
+
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
