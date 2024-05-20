@@ -14,6 +14,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+interface Login {
+  username: string;
+  password: string;
+}
+
 const UserSchema = zod.object({
   username: zod.string().min(1, "O Usuário é obrigatório"),
   password: zod.string().min(1, "A Senha é obrigatória"),
@@ -26,24 +31,21 @@ export function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<Login>({
     resolver: zodResolver(UserSchema),
   });
 
-  const onSubmitLogin = (data: any) => {
-    console.log(data);
+  const onSubmitLogin = (data: Login) => {
     axios
       .post("http://localhost:3000/api/users/login", data, {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response);
         localStorage.setItem("token", response.data.token);
         setError("");
       })
       .catch((error) => {
         setError(error.response.data.message);
-        console.error("Erro ao fazer login:", error.response.data.message);
       });
   };
 
