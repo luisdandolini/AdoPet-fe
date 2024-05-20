@@ -62,9 +62,25 @@ export function Register() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<Register>({
     resolver: zodResolver(UserRegisterSchema),
   });
+
+  const getCEP = (cep: string) => {
+    axios
+      .get(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((response) => {
+        const { data } = response;
+        setValue("state", data.uf);
+        setValue("city", data.localidade);
+        setValue("neighborhood", data.bairro);
+        setValue("street", data.logradouro);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const onSubmitRegister = (data: Register) => {
     axios
@@ -146,6 +162,7 @@ export function Register() {
                   replacement={{ _: /\d/ }}
                   placeholder="CEP*"
                   {...register("cep")}
+                  onBlur={(e) => getCEP(e.target.value)}
                 />
                 {errors.cep && <span>{String(errors.cep.message)}</span>}
               </Div>
