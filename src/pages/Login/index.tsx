@@ -70,7 +70,7 @@ export function Login() {
               {...register("password")}
             />
             {errors.password && <span>{String(errors.password.message)}</span>}
-            <a href="#">Esqueceu a sua senha?</a>
+            <Link to={"/forgot-password"}>Esqueceu a sua senha?</Link>
             <button type="submit">Login</button>
             {error && <span>{error}</span>}
           </form>

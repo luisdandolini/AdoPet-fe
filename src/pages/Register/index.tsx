@@ -222,8 +222,8 @@ export function Register() {
         key={vertical + horizontal}
         sx={{
           "& .MuiSnackbarContent-root": {
-            backgroundColor: "#4caf50", // Altere a cor de fundo aqui
-            color: "#fff", // Altere a cor do texto aqui
+            backgroundColor: "#4caf50",
+            color: "#fff",
           },
         }}
       />
