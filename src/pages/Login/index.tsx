@@ -12,7 +12,9 @@ import * as zod from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/auth/authSlice";
 
 interface Login {
   username: string;
@@ -26,6 +28,8 @@ const UserSchema = zod.object({
 
 export function Login() {
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -42,7 +46,9 @@ export function Login() {
       })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
+        dispatch(login(response.data.token));
         setError("");
+        navigate("/home");
       })
       .catch((error) => {
         setError(error.response.data.message);
