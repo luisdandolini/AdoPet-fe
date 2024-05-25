@@ -6,6 +6,7 @@ import { ResetPassword } from "../pages/ResetPassword";
 import { Home } from "../pages/Home";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import { LandingPage } from "../pages/LandingPage";
 
 const PrivateRoute = () => {
   const isAuthenticated = useSelector(
@@ -17,7 +18,8 @@ const PrivateRoute = () => {
 export function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset/:token" element={<ResetPassword />} />
