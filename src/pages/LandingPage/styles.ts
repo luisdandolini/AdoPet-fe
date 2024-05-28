@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
-  width: 100vw;
 `;
 
 export const ContainerAdopt = styled.section`
@@ -46,4 +45,9 @@ export const ContainerBoxAdopt = styled.div`
     padding: 0.5rem 2rem;
     border-radius: 5px;
   }
+`;
+
+export const ContainerCarousel = styled.section`
+  padding: 2rem 0rem;
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
